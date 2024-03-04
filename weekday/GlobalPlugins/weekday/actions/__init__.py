@@ -1,6 +1,6 @@
-﻿from .main import SolverAction
+﻿from .main import Solver
 
 
 __all__ = [
-    "SolverAction",
+    "Solver",
 ]

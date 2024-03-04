@@ -1,8 +1,9 @@
 from datetime import timedelta
 from typing import Union
 
-
 import addonHandler
+
+from .types import TimeUnit
 
 
 addonHandler.initTranslation()
@@ -31,14 +32,20 @@ class Interval:
         return f"{value} {unit}"
 
     @classmethod
-    def to_str(cls, interval: Union[timedelta, float]) -> str:
-        if isinstance(interval, float):
+    def to_str(cls, interval: Union[timedelta, float, int], unit: Union[TimeUnit, None] = None) -> str:
+        if unit and isinstance(interval, timedelta):
+            if interval.total_seconds() == 0:
+                interval = 0
+        if unit and isinstance(interval, int) and interval == 0:
+            return cls.get_text("5_more", unit.value, interval)
+        if isinstance(interval, float) or isinstance(interval, int):
             interval = timedelta(seconds=interval)
+
         time_interval_data = {
-            "days": round(interval.days),
-            "hours": round(interval.total_seconds() % 86400 // 3600),
-            "minutes": round(interval.total_seconds() % 86400 % 3600 // 60),
-            "seconds": round(interval.total_seconds() % 86400 % 3600 % 60)
+            TimeUnit.DAYS.value: round(interval.days),
+            TimeUnit.HOURS.value: round(interval.total_seconds() % 86400 // 3600),
+            TimeUnit.MINUTES.value: round(interval.total_seconds() % 86400 % 3600 // 60),
+            TimeUnit.SECONDS.value: round(interval.total_seconds() % 86400 % 3600 % 60)
         }
         texts = list()
         time_units = time_interval_data.keys()
@@ -55,6 +62,10 @@ class Interval:
                 text = cls.get_text("2_to_4", time_unit, value)
             else:
                 text = ""
+
+            if unit and time_unit == unit:
+                return text
+
             texts.append(text)
         time_interval = " ".join(texts)
         return time_interval

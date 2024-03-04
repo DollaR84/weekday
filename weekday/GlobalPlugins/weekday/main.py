@@ -4,7 +4,7 @@ import scriptHandler
 
 import ui
 
-from .actions import SolverAction
+from .actions import Solver
 
 
 addonHandler.initTranslation()
@@ -16,13 +16,31 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.actions: SolverAction = SolverAction()
+        self.solver: Solver = Solver()
 
     @scriptHandler.script(
-        # Translators: description say day of of the week
+        # Translators: say day of the week
         description=_("Says the day of the week"),
         gesture="kb:NVDA+W"
     )
     def script_weekday(self, gesture):
-        text = self.actions.get(scriptHandler.getLastScriptRepeatCount() + 1)
+        text = self.solver.get(scriptHandler.getLastScriptRepeatCount() + 1)
+        ui.message(text)
+
+    @scriptHandler.script(
+        # Translators: change mode
+        description=_("change mode"),
+        gesture="kb:NVDA+ALT+W"
+    )
+    def script_change_mode(self, gesture):
+        text = self.solver.change_mode()
+        ui.message(text)
+
+    @scriptHandler.script(
+        # Translators: additional function
+        description=_("additional function"),
+        gesture="kb:NVDA+SHIFT+W"
+    )
+    def script_additional(self, gesture):
+        text = self.solver.additional()
         ui.message(text)

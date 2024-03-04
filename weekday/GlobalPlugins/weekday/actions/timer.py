@@ -1,28 +1,41 @@
-﻿from .base import BaseAction
+﻿import addonHandler
+
+from .base import BaseTimerAction
 
 from ..entities import Timer
 
 
-class TimerAction(BaseAction):
+addonHandler.initTranslation()
+
+
+class TimerAction(BaseTimerAction):
 
     def __init__(self):
+        super().__init__()
+
         self.timer: Timer | None = None
+
+    @property
+    def name(self) -> str:
+        return _("Timer")
 
     @property
     def is_started(self) -> bool:
         return bool(self.timer)
 
-    def start(self) -> str:
+    @property
+    def is_settings(self) -> bool:
+        return False
+
+    def create(self):
         self.timer = Timer()
-        return self.timer.start()
+
+    def additional(self) -> str:
+        return self.press_1()
 
     def press_1(self) -> str:
-        return self.timer.get()
+        if self.is_started:
+            return self.timer.get()
 
-    def press_2(self) -> str:
-        if self.timer:
-            text = self.timer.stop()
-            self.timer = None
         else:
-            text = self.start()
-        return text
+            return self.start()

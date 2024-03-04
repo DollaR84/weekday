@@ -2,22 +2,22 @@
 
 from .base import BaseAction
 
-from ..entities import Weekday
+from ..entities import Signal
 
 
 addonHandler.initTranslation()
 
 
-class WeekdayAction(BaseAction):
+class SignalAction(BaseAction):
 
     def __init__(self):
         super().__init__()
 
-        self.weekday: Weekday = Weekday
+        self.signal: Signal = Signal()
 
     @property
     def name(self) -> str:
-        return _("Weekday")
+        return _("Signal")
 
     @property
     def is_started(self) -> bool:
@@ -31,4 +31,4 @@ class WeekdayAction(BaseAction):
         return self.press_1()
 
     def press_1(self) -> str:
-        return self.weekday.get_week_day()
+        return self.signal.get()

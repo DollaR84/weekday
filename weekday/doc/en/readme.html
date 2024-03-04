@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../style.css" media="screen">
-<title>Weekday 0.3.0</title>
+<title>Weekday 0.4.5</title>
 </head>
 <body>
 <h1>Weekday</h1>
@@ -13,12 +13,46 @@
 <p>Additional functions for working with date and time</p>
 <h2>List of hotkeys:</h2>
 <ul>
-<li>NVDA+W: A single press announces the day of the week if the timer has not been started;</li>
-<li>NVDA+W: A single press pronounces the amount of time that has passed if the timer has started;</li>
-<li>NVDA+W: Double-clicking starts the timer if the timer has not been started previously;</li>
-<li>NVDA+W: Double clicking stops the timer if the timer was started previously;</li>
+<li>All hotkeys are bound to NVDA+W. Different functions depend on the selected mode;</li>
+<li>NVDA+ALT+W: switches operating modes;</li>
+<li>NVDA+SHIFT+W: additional function in some modes;</li>
+</ul>
+<h3>Mode Day of the week</h3>
+<ul>
+<li>NVDA+W: pronounces the day of the week;</li>
+</ul>
+<h3>Timer mode</h3>
+<ul>
+<li>NVDA+W: single press turns on the timer if it is not running;</li>
+<li>NVDA+W: Double click starts the timer if it is not running or pauses it if it is running. Also restores its operation if it was suspended;</li>
+<li>NVDA+W: Triple click disables running timer;</li>
+</ul>
+<h3>Countdown mode</h3>
+<h4>The initial selection turns on the mode setting. It contains the following combinations:</h4>
+<ul>
+<li>NVDA+SHIFT+W: Switches settings units (hours, minutes, seconds);</li>
+<li>NVDA+W: A single press switches the time selection for installation, for hours in steps of 1 hour, for minutes and seconds - in steps of 5 units;</li>
+<li>NVDA+W: double click sets the selected interval;</li>
+<li>NVDA+W: triple pressing starts the countdown;</li>
+</ul>
+<h4>When running, the following combinations:</h4>
+<ul>
+<li>NVDA+W: a single press tells how much time is left until the designated period;</li>
+<li>NVDA+W: double-clicking pauses the countdown if it was running, or restores it back if it was paused;</li>
+<li>NVDA+W: triple pressing stops the countdown;</li>
+</ul>
+<h3>Time signal mode</h3>
+<ul>
+<li>NVDA+W: switches the signal period time (60, 30, 15, 0) minutes. Default 0 - signal disabled;</li>
 </ul>
 <h2>List of changes:</h2>
+<h3>Version 0.4.0</h3>
+<ul>
+<li>redesigned component architecture;</li>
+<li>added countdown timer;</li>
+<li>the control system has been changed and modes have been introduced;</li>
+</ul>
+
 <h3>Version 0.3.0</h3>
 <ul>
 <li>Added timer;</li>
