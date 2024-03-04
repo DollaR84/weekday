@@ -13,10 +13,10 @@ Additional functions for working with date and time
 ## Mode Day of the week
 * NVDA+W: pronounces the day of the week;
 
-## Timer mode
-* NVDA+W: single press turns on the timer if it is not running;
-* NVDA+W: Double click starts the timer if it is not running or pauses it if it is running. Also restores its operation if it was suspended;
-* NVDA+W: Triple click disables running timer;
+## Stopwatch mode
+* NVDA+W: single press turns on the stopwatch if it is not running;
+* NVDA+W: Double click starts the stopwatch if it is not running or pauses it if it is running. Also restores its operation if it was suspended;
+* NVDA+W: Triple click disables running stopwatch;
 
 ## Countdown mode
 The initial selection turns on the mode setting. It contains the following combinations:
@@ -62,4 +62,4 @@ When running, the following combinations:
 
 ###Version 0.3.0
 
-* Added timer;
+* Added stopwatch;
