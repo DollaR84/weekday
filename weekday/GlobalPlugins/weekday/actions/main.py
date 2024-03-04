@@ -2,6 +2,7 @@
 
 import addonHandler
 
+from .alarm import AlarmAction
 from .countdown_timer import CountDownTimerAction
 from .timer import TimerAction
 from .signal import SignalAction
@@ -18,6 +19,7 @@ class Solver:
             WeekdayAction(),
             TimerAction(),
             CountDownTimerAction(),
+            AlarmAction(),
             SignalAction(),
         ]
 

@@ -2,28 +2,28 @@
 
 from .base import BaseAlarmAction, BaseTimerAction
 
-from ..entities import CountDownTimer
+from ..entities import Alarm
 
 
 addonHandler.initTranslation()
 
 
-class CountDownTimerAction(BaseTimerAction, BaseAlarmAction):
+class AlarmAction(BaseAlarmAction, BaseTimerAction):
 
     def __init__(self):
         super().__init__()
 
-        self.timer: CountDownTimer | None = None
+        self.timer: Alarm | None = None
 
     @property
     def name(self) -> str:
-        return _("Countdown timer")
+        return _("Alarm")
 
     def create(self):
-        self.timer = CountDownTimer()
+        self.timer = Alarm()
 
     def press_2(self) -> str:
         if self.is_settings:
             time_period_str = self.timer.set_time_period()
-            return "\n".join([_("Countdown timer time period set"), time_period_str])
+            return "\n".join([_("Alarm time period set"), time_period_str])
         return super().press_2()

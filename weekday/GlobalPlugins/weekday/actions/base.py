@@ -50,3 +50,26 @@ class BaseTimerAction(BaseAction, ABC):
         else:
             text = self.start()
         return text
+
+
+class BaseAlarmAction(BaseAction, ABC):
+
+    @property
+    def is_started(self) -> bool:
+        return self.timer and self.timer.is_running
+
+    @property
+    def is_settings(self) -> bool:
+        return self.timer and not self.timer.is_running
+
+    def additional(self) -> str:
+        if not self.timer:
+            self.create()
+
+        return self.timer.next_time_unit()
+
+    def press_1(self) -> str:
+        if not self.timer:
+            self.create()
+
+        return self.timer.get()

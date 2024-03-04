@@ -30,10 +30,25 @@ When running, the following combinations:
 * NVDA+W: double-clicking pauses the countdown if it was running, or restores it back if it was paused;
 * NVDA+W: triple pressing stops the countdown;
 
+## Alarm mode
+The initial selection turns on the mode setting. It contains the following combinations:
+* NVDA+SHIFT+W: Switches settings units (hours, minutes, seconds);
+* NVDA+W: A single press switches the time selection for installation, for hours in steps of 1 hour, for minutes and seconds - in steps of 5 units;
+* NVDA+W: double click sets the selected time;
+* NVDA+W: triple pressing starts the alarm;
+
+When running, the following combinations:
+* NVDA+W: a single press tells you how much time is left until the appointed time;
+* NVDA+W: triple pressing stops the alarm;
+
 ## Time signal mode
 * NVDA+W: switches the signal period time (60, 30, 15, 0) minutes. Default 0 - signal disabled;
 
 ##List of changes:
+
+###Version 0.5.0
+
+* added alarm mode;
 
 ###Version 0.4.5
 

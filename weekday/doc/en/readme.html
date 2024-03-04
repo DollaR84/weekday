@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../style.css" media="screen">
-<title>Weekday 0.4.5</title>
+<title>Weekday 0.5.0</title>
 </head>
 <body>
 <h1>Weekday</h1>
@@ -41,11 +41,34 @@
 <li>NVDA+W: double-clicking pauses the countdown if it was running, or restores it back if it was paused;</li>
 <li>NVDA+W: triple pressing stops the countdown;</li>
 </ul>
+<h3>Alarm mode</h3>
+<h4>The initial selection turns on the mode setting. It contains the following combinations:</h4>
+<ul>
+<li>NVDA+SHIFT+W: Switches settings units (hours, minutes, seconds);</li>
+<li>NVDA+W: A single press switches the time selection for installation, for hours in steps of 1 hour, for minutes and seconds - in steps of 5 units;</li>
+<li>NVDA+W: double click sets the selected time;</li>
+<li>NVDA+W: triple pressing starts the alarm;</li>
+</ul>
+<h4>When running, the following combinations:</h4>
+<ul>
+<li>NVDA+W: a single press tells you how much time is left until the appointed time;</li>
+<li>NVDA+W: triple pressing stops the alarm;</li>
+</ul>
 <h3>Time signal mode</h3>
 <ul>
 <li>NVDA+W: switches the signal period time (60, 30, 15, 0) minutes. Default 0 - signal disabled;</li>
 </ul>
+
 <h2>List of changes:</h2>
+<h3>Version 0.5.0</h3>
+<ul>
+<li>added alarm mode;</li>
+</ul>
+<h3>Version 0.4.5</h3>
+<ul>
+<li>added Time Signal mode;</li>
+</ul>
+
 <h3>Version 0.4.0</h3>
 <ul>
 <li>redesigned component architecture;</li>
