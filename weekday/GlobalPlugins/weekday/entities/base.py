@@ -6,7 +6,17 @@ from typing import Union
 from ..utils import Interval, types
 
 
-class BaseTimer(ABC):
+class BaseEntity(ABC):
+
+    def save_data(self) -> dict:
+        return {}
+
+    def load_data(self, data: dict):
+        for key, value in data.items():
+            setattr(self, key, value)
+
+
+class BaseTimer(BaseEntity, ABC):
 
     def __init__(self):
         self.resume_period: timedelta | None = None
@@ -35,8 +45,13 @@ class BaseTimer(ABC):
     def stop(self) -> str:
         raise NotImplementedError
 
+    def save_data(self) -> dict:
+        data = super().save_data()
+        data.update(resume_period=self.resume_period)
+        return data
 
-class BaseAlarm(ABC):
+
+class BaseAlarm(BaseEntity, ABC):
 
     def __init__(self):
         super().__init__()
@@ -140,3 +155,17 @@ class BaseAlarm(ABC):
         self.hours_current_value = 0
         self.minutes_current_value = 0
         self.seconds_current_value = 0
+
+    def save_data(self) -> dict:
+        data = super().save_data()
+        data.update(
+            is_running=self.is_running,
+            time_finished=self.time_finished,
+            time_period=self.time_period,
+            time_unit=self.time_unit,
+            save_time=self.save_time,
+            hours_current_value=self.hours_current_value,
+            minutes_current_value=self.minutes_current_value,
+            seconds_current_value=self.seconds_current_value,
+        )
+        return data

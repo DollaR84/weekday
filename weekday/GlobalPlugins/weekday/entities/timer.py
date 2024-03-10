@@ -42,3 +42,8 @@ class Timer(BaseTimer):
         else:
             last_time = Interval.to_str(datetime.now() - self.time_started)
         return "\n".join([_("The timer is disabled. Working hours:"), last_time])
+
+    def save_data(self) -> dict:
+        data = super().save_data()
+        data.update(time_started=self.time_started)
+        return data

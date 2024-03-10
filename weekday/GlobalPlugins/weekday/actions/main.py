@@ -8,6 +8,8 @@ from .timer import TimerAction
 from .signal import SignalAction
 from .weekday import WeekdayAction
 
+from ..utils import Saver
+
 
 addonHandler.initTranslation()
 
@@ -22,6 +24,14 @@ class Solver:
             AlarmAction(),
             SignalAction(),
         ]
+
+        self.saver: Saver = Saver()
+        try:
+            data = self.saver.load()
+            for action in self.actions:
+                action.load_data(data)
+        except Exception:
+            pass
 
         self.current_action = None
         self.action_generator = self._action_generator()
@@ -38,7 +48,14 @@ class Solver:
         if not self.current_action:
             next(self.action_generator)
 
-        return self.current_action.additional()
+        text = self.current_action.additional()
+        if not text:
+            data = {}
+            for action in self.actions:
+                data.update(action.save_data())
+            self.saver.save(data)
+            text = _("data saved")
+        return text
 
     def get(self, press_count: int) -> str:
         if not self.current_action:

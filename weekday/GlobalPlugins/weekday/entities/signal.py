@@ -3,12 +3,12 @@ from itertools import cycle
 
 import wx
 
-from ..player import Player
+from .base import BaseEntity
 
-from ..utils import Interval, types
+from ..utils import Interval, Player, types
 
 
-class Signal:
+class Signal(BaseEntity):
 
     def __init__(self):
         self.time_period: timedelta = timedelta(seconds=0)
@@ -53,3 +53,12 @@ class Signal:
     def signal(self):
         Player.play(2)
         self.track_process = wx.CallLater(self.time_period.total_seconds() * 1000, self.signal)
+
+    def save_data(self) -> dict:
+        data = super().save_data()
+        data.update(time_period=self.time_period)
+        return data
+
+    def load_data(self, data: dict):
+        super().load_data(data)
+        self.set_signal()

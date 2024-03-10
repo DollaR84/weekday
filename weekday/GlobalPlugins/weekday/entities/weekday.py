@@ -2,11 +2,13 @@
 
 import addonHandler
 
+from .base import BaseEntity
+
 
 addonHandler.initTranslation()
 
 
-class Weekday:
+class Weekday(BaseEntity):
 
     days = [
         _("Monday"),

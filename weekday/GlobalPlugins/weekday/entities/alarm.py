@@ -6,9 +6,7 @@ import wx
 
 from .base import BaseAlarm
 
-from ..player import Player
-
-from ..utils import types
+from ..utils import Player, types
 
 
 addonHandler.initTranslation()
@@ -16,9 +14,7 @@ addonHandler.initTranslation()
 
 class Alarm(BaseAlarm):
 
-    def start(self) -> str:
-        bounce = 2 if self.time_unit == types.TimeUnit.HOURS else 10
-        self.calc_time_period(bounce)
+    def set_signal(self):
         if self.time_period:
             now = datetime.now()
             self.time_finished = now.replace(
@@ -29,7 +25,13 @@ class Alarm(BaseAlarm):
             self.is_running = True
 
             time_period = self.time_finished - datetime.now()
-            self.track_process = wx.CallLater(time_period.total_seconds() * 1000, self.check_stop_and_signal)
+            self.track_process = wx.CallLater(time_period.total_seconds() * 1000, self.signal)
+
+    def start(self) -> str:
+        bounce = 2 if self.time_unit == types.TimeUnit.HOURS else 10
+        self.calc_time_period(bounce)
+        self.set_signal()
+        if self.track_process:
             return _("Alarm started")
 
     def stop(self) -> str:
@@ -39,6 +41,10 @@ class Alarm(BaseAlarm):
         self._stop()
         return _("The alarm is disabled")
 
-    def check_stop_and_signal(self):
-        self._stop()
+    def signal(self):
         Player.play(1)
+        self.set_signal()
+
+    def load_data(self, data: dict):
+        super().load_data(data)
+        self.set_signal()

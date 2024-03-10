@@ -10,10 +10,8 @@ addonHandler.initTranslation()
 
 class SignalAction(BaseAction):
 
-    def __init__(self):
-        super().__init__()
-
-        self.signal: Signal = Signal()
+    def create(self):
+        self.entity: Signal = Signal()
 
     @property
     def name(self) -> str:
@@ -27,8 +25,8 @@ class SignalAction(BaseAction):
     def is_settings(self) -> bool:
         return False
 
-    def additional(self) -> str:
-        return self.press_1()
-
     def press_1(self) -> str:
-        return self.signal.get()
+        if not self.entity:
+            self.create()
+
+        return self.entity.get()

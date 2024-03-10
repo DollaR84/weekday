@@ -6,9 +6,7 @@ import wx
 
 from .base import BaseTimer, BaseAlarm
 
-from ..player import Player
-
-from ..utils import types
+from ..utils import Player, types
 
 
 addonHandler.initTranslation()
@@ -63,3 +61,8 @@ class CountDownTimer(BaseTimer, BaseAlarm):
     def check_stop_and_signal(self):
         self._stop()
         Player.play(0)
+
+    def save_data(self) -> dict:
+        data = super().save_data()
+        data.update(time_started=self.time_started)
+        return data
