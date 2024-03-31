@@ -30,3 +30,6 @@ class WeekdayAction(BaseAction):
             self.create()
 
         return self.entity.get_week_day()
+
+    def press_2(self) -> str:
+        return self.entity.get_text()

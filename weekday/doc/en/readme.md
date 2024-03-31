@@ -13,6 +13,7 @@ Additional functions for working with date and time
 
 ## Mode Day of the week
 * NVDA+W: pronounces the day of the week;
+* NVDA+W: Double-clicking pronounces the holiday on this day, if any, as well as a historical fact about this day;
 
 ## Stopwatch mode
 * NVDA+W: single press turns on the stopwatch if it is not running;
@@ -46,6 +47,10 @@ When running, the following combinations:
 * NVDA+W: switches the signal period time (60, 30, 15, 0) minutes. Default 0 - signal disabled;
 
 ##List of changes:
+###Version 0.5.5
+* added pronunciation of the holiday on the current day if there is one;
+* added pronunciation of historical fact on the current day;
+
 ###Version 0.5.2
 * added saving settings;
 
