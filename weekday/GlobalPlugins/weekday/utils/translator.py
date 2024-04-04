@@ -19,9 +19,9 @@ SV1;\
 
 
 def translate(to_translate, to_language="auto", from_language="auto"):
-    base_link = "http://translate.google.com/m?hl=%s&sl=%s&q=%s"
+    base_link = "http://translate.google.com/m?sl=%s&hl=%s&tl=%s&q=%s"
     to_translate = urllib.parse.quote(to_translate)
-    link = base_link % (to_language, from_language, to_translate)
+    link = base_link % (from_language, to_language, to_language, to_translate)
     request = urllib.request.Request(link, headers=headers)
     raw_data = urllib.request.urlopen(request).read()
     data = raw_data.decode("utf-8")
