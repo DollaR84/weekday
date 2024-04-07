@@ -57,6 +57,7 @@ class BaseAlarm(BaseEntity, ABC):
         super().__init__()
 
         self.is_running: bool = False
+        self.need_reminder: bool = False
         self.time_finished: datetime | None = None
         self.time_period: timedelta | int = 0
         self.time_unit: types.TimeUnit = types.TimeUnit.HOURS

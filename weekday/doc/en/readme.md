@@ -47,6 +47,9 @@ When running, the following combinations:
 * NVDA+W: switches the signal period time (60, 30, 15, 0) minutes. Default 0 - signal disabled;
 
 ##List of changes:
+###Version 0.5.7
+* added an alarm reminder every 30 seconds until the time is reset by double pressing NVDA+W;
+
 ###Version 0.5.6
 * added pronunciation of the holiday on the current day if there is one;
 * added pronunciation of historical fact on the current day;

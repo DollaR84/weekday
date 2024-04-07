@@ -15,7 +15,9 @@ addonHandler.initTranslation()
 class Alarm(BaseAlarm):
 
     def set_signal(self):
-        if self.time_period:
+        if self.need_reminder:
+            self.track_process = wx.CallLater(30 * 1000, self.signal)
+        elif self.time_period:
             now = datetime.now()
             self.time_finished = now.replace(
                 hour=round(self.hours_current_value // self.factor(types.TimeUnit.HOURS)),
@@ -23,9 +25,10 @@ class Alarm(BaseAlarm):
                 second=round(self.seconds_current_value // self.factor(types.TimeUnit.SECONDS)),
             )
             self.is_running = True
+            self.need_reminder = True
 
             time_period = self.time_finished - datetime.now()
-            self.track_process = wx.CallLater(time_period.total_seconds() * 1000, self.signal)
+            self.track_process = wx.CallLater(int(time_period.total_seconds()) * 1000, self.signal)
 
     def start(self) -> str:
         bounce = 2 if self.time_unit == types.TimeUnit.HOURS else 10
