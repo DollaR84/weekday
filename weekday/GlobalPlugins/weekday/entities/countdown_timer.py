@@ -33,7 +33,7 @@ class CountDownTimer(BaseTimer, BaseAlarm):
             self.time_finished = self.time_started + self.time_period
             self.is_running = True
 
-            self.track_process = wx.CallLater(self.time_period.total_seconds() * 1000, self.check_stop_and_signal)
+            self.track_process = wx.CallLater(int(self.time_period.total_seconds()) * 1000, self.check_stop_and_signal)
             return _("Countdown timer started")
 
     def stop(self) -> str:
@@ -66,3 +66,12 @@ class CountDownTimer(BaseTimer, BaseAlarm):
         data = super().save_data()
         data.update(time_started=self.time_started)
         return data
+
+    def load_data(self, data: dict):
+        super().load_data(data)
+        if self.time_finished and datetime.now() >= self.time_finished:
+            return self.check_stop_and_signal()
+
+        if self.is_running:
+            time_period = self.time_finished - datetime.now()
+            self.track_process = wx.CallLater(int(time_period.total_seconds()) * 1000, self.check_stop_and_signal)

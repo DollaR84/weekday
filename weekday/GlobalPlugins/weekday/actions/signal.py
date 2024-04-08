@@ -30,3 +30,6 @@ class SignalAction(BaseAction):
             self.create()
 
         return self.entity.get()
+
+    def additional(self) -> str:
+        return self.entity.change_type()

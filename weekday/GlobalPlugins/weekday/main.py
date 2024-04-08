@@ -19,7 +19,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         self.solver: Solver = Solver()
 
     @scriptHandler.script(
-        # Translators: say day of the week
         description=_("Says the day of the week"),
         gesture="kb:NVDA+W"
     )

@@ -1,4 +1,5 @@
 ﻿from itertools import cycle
+import logging
 
 import addonHandler
 
@@ -30,8 +31,8 @@ class Solver:
             data = self.saver.load()
             for action in self.actions:
                 action.load_data(data)
-        except Exception:
-            pass
+        except Exception as error:
+            logging.error(error, exc_info=True)
 
         self.current_action = None
         self.action_generator = self._action_generator()
@@ -44,21 +45,32 @@ class Solver:
     def change_mode(self) -> str:
         return next(self.action_generator)
 
+    def save_data(self):
+        data = {}
+        for action in self.actions:
+            data.update(action.save_data())
+        self.saver.save(data)
+
     def additional(self) -> str:
         if not self.current_action:
             next(self.action_generator)
 
         text = self.current_action.additional()
         if not text:
-            data = {}
-            for action in self.actions:
-                data.update(action.save_data())
-            self.saver.save(data)
+            self.save_data()
             text = _("data saved")
+        elif isinstance(self.current_action, SignalAction):
+            self.save_data()
         return text
 
     def get(self, press_count: int) -> str:
         if not self.current_action:
             next(self.action_generator)
 
-        return self.current_action.get(press_count)
+        text = self.current_action.get(press_count)
+
+        if press_count == 3 or (
+            press_count == 2 and isinstance(self.current_action, TimerAction)
+        ):
+            self.save_data()
+        return text

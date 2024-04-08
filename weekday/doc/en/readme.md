@@ -47,8 +47,16 @@ When running, the following combinations:
 * NVDA+W: switches the signal period time (60, 30, 15, 0) minutes. Default 0 - signal disabled;
 
 ##List of changes:
-###Version 0.5.7
+###Version 0.5.9
+* added selection of signal type for temporary signal (sound, speech, sound and speech together, nothing);
+* added autosave in time signal and timer modes;
+* fixed a bug when loading saved settings;
+
+###Version 0.5.8
 * added an alarm reminder every 30 seconds until the time is reset by double pressing NVDA+W;
+* added auto-saving of settings when turning on/off the countdown, alarm clock;
+* added restoration of countdown from saved data after restart;
+* fixed a floating error when setting a signal over time in different modes;
 
 ###Version 0.5.6
 * added pronunciation of the holiday on the current day if there is one;

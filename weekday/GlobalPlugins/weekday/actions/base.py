@@ -28,9 +28,9 @@ class BaseAction(ABC):
 
     def load_data(self, data: dict):
         data_ = data.get(self.__class__.__name__)
-        if data_ and not self.entity:
+        if not self.entity:
             self.create()
-            self.entity.load_data(data_)
+        self.entity.load_data(data_)
 
 
 class BaseTimerAction(BaseAction, ABC):

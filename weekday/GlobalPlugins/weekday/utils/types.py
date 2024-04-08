@@ -6,3 +6,10 @@ class TimeUnit(Enum):
     HOURS = "hours"
     MINUTES = "minutes"
     SECONDS = "seconds"
+
+
+class SignalType(Enum):
+    SOUND = "sound"
+    SPEECH = "speech"
+    SOUND_AND_SPEECH = "sound_and_speech"
+    OFF = "off"
