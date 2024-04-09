@@ -9,6 +9,7 @@ Additional functions for working with date and time
 * All hotkeys are bound to NVDA+W. Different functions depend on the selected mode;
 * NVDA+ALT+W: switches operating modes;
 * NVDA+SHIFT+W: in countdown and alarm modes, switches between time measurements (hours, minutes, seconds);
+* NVDA+SHIFT+W: in temporary signal mode, changes the signal setting: sound, speech, sound and speech together or nothing;
 * NVDA+SHIFT+W: in day of the week, stopwatch and time signal modes, saves the settings of all modes;
 
 ## Mode Day of the week
