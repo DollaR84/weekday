@@ -17,6 +17,9 @@ class BaseAction(ABC):
     def additional(self) -> str:
         return None
 
+    def additional2(self, press_count: int):
+        return
+
     def get(self, press_count: int) -> str:
         if hasattr(self, f"press_{press_count}"):
             return getattr(self, f"press_{press_count}")()

@@ -10,11 +10,14 @@ Additional functions for working with date and time
 * NVDA+ALT+W: switches operating modes;
 * NVDA+SHIFT+W: in countdown and alarm modes, switches between time measurements (hours, minutes, seconds);
 * NVDA+SHIFT+W: in temporary signal mode, changes the signal setting: sound, speech, sound and speech together or nothing;
+* NVDA+SHIFT+W: in day of the week mode, changes the setting of historical facts: historical fact, event from wikipedia, event from wikipedia and historical fact together or nothing;
 * NVDA+SHIFT+W: in day of the week, stopwatch and time signal modes, saves the settings of all modes;
 
 ## Mode Day of the week
 * NVDA+W: pronounces the day of the week;
-* NVDA+W: Double-clicking pronounces the holiday on this day, if any, as well as a historical fact about this day;
+* NVDA+W: Double click pronounces the holiday on this day if there is one, as well as a historical fact about this day and/or event from wikipedia;
+* NVDA+SHIFT+ALT+W: launches the selected program for quick launch;
+* NVDA+SHIFT+ALT+W: double-clicking allows you to select a program for quick launch;
 
 ## Stopwatch mode
 * NVDA+W: single press turns on the stopwatch if it is not running;
@@ -48,9 +51,11 @@ When running, the following combinations:
 * NVDA+W: switches the signal period time (60, 30, 15, 0) minutes. Default 0 - signal disabled;
 
 ##List of changes:
-###Version 0.5.9
+###Version 1.0.0
+* added selection and launch of the quick launch program;
+* added a choice of source of historical facts for the day of the week;
 * added selection of signal type for temporary signal (sound, speech, sound and speech together, nothing);
-* added autosave in time signal and timer modes;
+* added autosaving in day of the week, time signal and timer modes;
 * fixed a bug when loading saved settings;
 
 ###Version 0.5.8

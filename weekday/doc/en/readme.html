@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../style.css" media="screen">
-<title>Weekday 0.5.9</title>
+<title>Weekday 1.0.0</title>
 </head>
 <body>
 <h1>Weekday</h1>
@@ -17,12 +17,15 @@
 <li>NVDA+ALT+W: switches operating modes;</li>
 <li>NVDA+SHIFT+W: in countdown and alarm modes, switches between time measurements (hours, minutes, seconds);</li>
 <li>NVDA+SHIFT+W: in temporary signal mode, changes the signal setting: sound, speech, sound and speech together or nothing;</li>
+<li>NVDA+SHIFT+W: in day of the week mode, changes the setting of historical facts: historical fact, event from wikipedia, event from wikipedia and historical fact together or nothing;</li>
 <li>NVDA+SHIFT+W: in day of the week, stopwatch and time signal modes, saves the settings of all modes;</li>
 </ul>
 <h3>Mode Day of the week</h3>
 <ul>
 <li>NVDA+W: pronounces the day of the week;</li>
-<li>NVDA+W: Double-clicking pronounces the holiday on this day, if any, as well as a historical fact about this day;</li>
+<li>NVDA+W: Double click pronounces the holiday on this day if there is one, as well as a historical fact about this day and/or event from wikipedia;</li>
+<li>NVDA+SHIFT+ALT+W: launches the selected program for quick launch;</li>
+<li>NVDA+SHIFT+ALT+W: double-clicking allows you to select a program for quick launch;</li>
 </ul>
 <h3>Stopwatch mode</h3>
 <ul>
@@ -63,10 +66,12 @@
 </ul>
 
 <h2>List of changes:</h2>
-<h3>Version 0.5.9</h3>
+<h3>Version 1.0.0</h3>
 <ul>
+<li>added selection and launch of the quick launch program;</li>
+<li>added a choice of source of historical facts for the day of the week;</li>
 <li>added selection of signal type for temporary signal (sound, speech, sound and speech together, nothing);</li>
-<li>added autosave in time signal and timer modes;</li>
+<li>added autosaving in day of the week, time signal and timer modes;</li>
 <li>fixed a bug when loading saved settings;</li>
 </ul>
 

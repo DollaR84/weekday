@@ -29,7 +29,7 @@ class Signal(BaseEntity):
         for minutes in cycle([60, 30, 15, 0]):
             yield minutes
 
-    def _signal_type_generator(self) -> int:
+    def _signal_type_generator(self) -> types.SignalType:
         for type_ in cycle(types.SignalType):
             yield type_
 
@@ -53,7 +53,7 @@ class Signal(BaseEntity):
               return _("signal type speech")
           case types.SignalType.SOUND_AND_SPEECH:
               return _("signal type sound and speech")
-          case types.SignalType.OFF:
+          case types.SignalType.DISABLED:
               return _("signal type off")
 
     def get(self):
@@ -72,18 +72,17 @@ class Signal(BaseEntity):
             minutes_to_add = (-(now.minute % minutes) + minutes) % minutes
             time_finished = now + timedelta(minutes=minutes_to_add)
             time_finished = time_finished.replace(second=0, microsecond=0)
-            time_period = time_finished - now
+            time_period = time_finished - now.replace(microsecond=0)
             self.track_process = wx.CallLater(int(time_period.total_seconds()) * 1000, self.signal)
 
     def signal(self):
-        if self.type != types.SignalType.OFF:
-            if self.type in (types.SignalType.SPEECH, types.SignalType.SOUND_AND_SPEECH):
-                now = datetime.now()
-                minute = now.minute if (now.minute % 5) == 0 else now.minute + 1
-                time_period = timedelta(hours=now.hour, minutes=minute)
-                ui.message(Interval.to_str(time_period))
+        if self.type != types.SignalType.DISABLED:
             if self.type in (types.SignalType.SOUND, types.SignalType.SOUND_AND_SPEECH):
                 Player.play(2)
+            if self.type in (types.SignalType.SPEECH, types.SignalType.SOUND_AND_SPEECH):
+                now = datetime.now()
+                time_period = timedelta(hours=now.hour, minutes=now.minute)
+                ui.message(Interval.to_str(time_period))
             self.track_process = wx.CallLater(int(self.time_period.total_seconds()) * 1000, self.signal)
 
     def save_data(self) -> dict:

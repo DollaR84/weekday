@@ -59,9 +59,15 @@ class Solver:
         if not text:
             self.save_data()
             text = _("data saved")
-        elif isinstance(self.current_action, SignalAction):
+        elif isinstance(self.current_action, SignalAction) or isinstance(self.current_action, WeekdayAction):
             self.save_data()
         return text
+
+    def additional2(self, press_count: int) -> str:
+        if not self.current_action:
+            next(self.action_generator)
+
+        self.current_action.additional2(press_count)
 
     def get(self, press_count: int) -> str:
         if not self.current_action:

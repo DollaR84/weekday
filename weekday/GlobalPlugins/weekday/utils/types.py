@@ -12,4 +12,11 @@ class SignalType(Enum):
     SOUND = "sound"
     SPEECH = "speech"
     SOUND_AND_SPEECH = "sound_and_speech"
-    OFF = "off"
+    DISABLED = "disabled"
+
+
+class DateEventType(Enum):
+    SOURCE1 = "source1"
+    SOURCE2 = "source2"
+    SOURCE12 = "source12"
+    DISABLED = "disabled"

@@ -1,4 +1,5 @@
 ﻿import addonHandler
+import wx
 
 from .base import BaseAction
 
@@ -24,6 +25,16 @@ class WeekdayAction(BaseAction):
     @property
     def is_settings(self) -> bool:
         return False
+
+    def additional(self) -> str:
+        return self.entity.change_type()
+
+    def additional2(self, press_count: int):
+        match press_count:
+            case 1:
+                return wx.CallAfter(self.entity.run_fast_open_program)
+            case 2:
+                wx.CallAfter(self.entity.select_fast_open_program)
 
     def press_1(self) -> str:
         if not self.entity:

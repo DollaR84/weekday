@@ -19,7 +19,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         self.solver: Solver = Solver()
 
     @scriptHandler.script(
-        description=_("Says the day of the week"),
+        description=_("main action"),
         gesture="kb:NVDA+W"
     )
     def script_weekday(self, gesture):
@@ -27,7 +27,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         ui.message(text)
 
     @scriptHandler.script(
-        # Translators: change mode
         description=_("change mode"),
         gesture="kb:NVDA+ALT+W"
     )
@@ -36,10 +35,17 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         ui.message(text)
 
     @scriptHandler.script(
-        # Translators: additional function
         description=_("additional function"),
         gesture="kb:NVDA+SHIFT+W"
     )
     def script_additional(self, gesture):
         text = self.solver.additional()
-        ui.message(text)
+        if text:
+            ui.message(text)
+
+    @scriptHandler.script(
+        description=_("additional 2 action"),
+        gesture="kb:NVDA+SHIFT+ALT+W"
+    )
+    def script_additional2(self, gesture):
+        self.solver.additional2(scriptHandler.getLastScriptRepeatCount() + 1)
