@@ -1,6 +1,7 @@
 # Weekday
 
 * Author: Ruslan Dolovaniuk (Ukraine)
+* PayPal: ruslan.dolovaniuk84@gmail.com
 
 
 Additional functions for working with date and time
