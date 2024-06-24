@@ -52,7 +52,7 @@ When running, the following combinations:
 * NVDA+W: switches the signal period time (60, 30, 15, 0) minutes. Default 0 - signal disabled;
 
 ## List of changes:
-### Version 1.0.5
+### Version 1.0.6
 * fixed the problem of pronunciation of time at midnight;
 
 ### Version 1.0.0

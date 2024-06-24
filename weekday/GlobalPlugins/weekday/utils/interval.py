@@ -54,7 +54,7 @@ class Interval:
             value = time_interval_data[time_unit]
             if value < 0:
                 continue
-            elif value == 0 and time_unit not in (TimeUnit.HOURS.value, TimeUnit.MINUTES.value,):
+            elif value == 0 and time_unit not in (TimeUnit.HOURS.value,):
                 continue
             elif value in range(5, 21) or value % 10 in list(range(5, 10)) + [0]:
                 text = cls.get_text("5_more", time_unit, value)
