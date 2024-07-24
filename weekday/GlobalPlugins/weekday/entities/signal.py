@@ -74,7 +74,7 @@ class Signal(BaseEntity):
             time_finished = time_finished.replace(second=0, microsecond=0)
             if (time_finished.minute % 5) != 0:
                 time_finished = time_finished.replace(minute=time_finished.minute + 1)
-            time_period = time_finished - now.replace(second=now.second - 1, microsecond=0)
+            time_period = time_finished - now.replace(microsecond=0)
             self.track_process = wx.CallLater(int(time_period.total_seconds()) * 1000, self.signal)
 
     def signal(self):
