@@ -67,14 +67,15 @@ class Signal(BaseEntity):
             if self.track_process:
                 self.track_process.Stop()
             self.track_process = None
+
         else:
             now = datetime.now()
             minutes_to_add = (-(now.minute % minutes) + minutes) % minutes
             time_finished = now + timedelta(minutes=minutes_to_add)
             time_finished = time_finished.replace(second=0, microsecond=0)
-            if (time_finished.minute % 5) != 0:
-                time_finished = time_finished.replace(minute=time_finished.minute + 1)
-            time_period = time_finished - now.replace(microsecond=0)
+            time_period = time_finished - now.replace(second=0, microsecond=0)
+            if (time_period.total_seconds() % 5) != 0:
+                time_period += timedelta(seconds=1)
             self.track_process = wx.CallLater(int(time_period.total_seconds()) * 1000, self.signal)
 
     def signal(self):
