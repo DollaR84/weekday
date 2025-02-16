@@ -1,7 +1,9 @@
 # Weekday
 
 * Author: Ruslan Dolovaniuk (Ukraine)
-* PayPal: ruslan.dolovaniuk84@gmail.com
+* PayPal: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B3VG4L8B7CV3Y&source=url
+* Telegram Channel: https://t.me/elrusapps
+* Telegram Group: https://t.me/elrus_apps
 
 
 Additional functions for working with date and time
@@ -52,7 +54,13 @@ When running, the following combinations:
 * NVDA+W: switches the signal period time (60, 30, 15, 0) minutes. Default 0 - signal disabled;
 
 ## List of changes:
-### Version 1.0.5
+### Version 1.1.0
+* added Turkish localization (Umut KORKMAZ);
+
+### Version 1.0.7
+* fixed the accuracy of the clock signal;
+
+### Version 1.0.6
 * fixed the problem of pronunciation of time at midnight;
 
 ### Version 1.0.0
